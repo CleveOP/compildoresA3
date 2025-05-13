@@ -1,0 +1,391 @@
+*{
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafb; /* Fundo claro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+/* Estilo para o container principal */
+.Kanban {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as colunas se ajustem em telas menores */
+    gap: 20px;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.kanban-column{
+    flex: 1 1 300px; /* Ajusta a largura mínima e máxima das colunas */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    overflow: hidden;
+    position: relative;
+    min-width: 252px;
+}
+
+.kanban-column::after{
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+}
+
+.kanban-column[data-id="1"]::after{
+    background-color:#d573b6 ;
+
+}
+
+.kanban-column[data-id="2"]::after{
+    background-color:#Fea065 ;
+
+}
+
+.kanban-column[data-id="3"]::after{
+    background-color:#fed565 ;
+
+}
+
+.kanban-column[data-id="4"]::after{
+    background-color:#92a5fb ;
+
+}
+
+.kanban-column[data-id="5"]::after{
+    background-color:#6ed0bc ;
+
+}
+
+.kanban-title{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.kanban-title h2{
+    font-size: 18px;
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.add-card{
+    color: #4b5563;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.kanban-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height:100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.kanban-card{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.badge{
+    color: #fff;
+    width: fit-content;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.badge.high{
+    background-color: #d573b6;
+}
+
+.badge.medium{
+    background-color: #Fea065;
+}
+.badge.low{
+    background-color: #92a5fb;
+}
+
+.card-infos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-icons{
+    display: flex;
+    gap: 18px;
+}
+
+.card-icons i{
+    color: #a8a8aa;
+}
+
+.user img{
+    width: 42px; 
+    height: 42px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.dragging{
+    opacity:0;
+}
+
+.cards-hover{
+    background-color: #eaeffa;
+    border-radius: 8px;
+
+}
+
+*::-webkit-scrollbar{
+    width: 8px;
+
+}
+
+*::-webkit-scrollbar-track{
+    background-color: #8ad68a;
+    border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: #92be7e;
+    border-radius: 20px;
+}
+.task-creation-form {
+    background-color: #f6f8fc; /* Cor de fundo das colunas */
+    padding: 20px;
+    border-radius: 12px; /* Mesmo arredondamento das colunas */
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1); /* Mesma sombra das colunas */
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none; /* Remover a borda branca padrão */
+}
+
+.task-creation-form h3 {
+    margin-top: 0;
+    color: #4b5563;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.task-creation-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4b5563;
+    font-weight: bold;
+}
+
+.task-creation-form input[type="text"],
+.task-creation-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.task-creation-form button {
+    background-color: #6366f1;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+}
+
+.task-creation-form button:hover {
+    background-color: #4f46e5;
+}
+
+.delete-card-btn {
+    background: none;
+    border: none;
+    color: #dc2626; /* Vermelho */
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute; /* Para posicionar no canto do card */
+    top: 8px;
+    right: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    padding: 5px; /* Adiciona um pouco de espaço ao redor do ícone */
+}
+
+.delete-card-btn:hover {
+    opacity: 1;
+}
+
+.delete-card-btn i {
+    pointer-events: none; /* Para que o clique seja no botão, não no ícone */
+}
+
+.approve-card-btn {
+    background-color: #16a34a; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-top: 8px; /* Adiciona um pouco de espaço entre os botões (se ficarem um abaixo do outro) */
+    display: block; /* Faz o botão ocupar a largura disponível e ficar em uma linha separada */
+    text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+.approve-card-btn:hover {
+    background-color: #15803d;
+}
+
+.kanban-card {
+    position: relative; /* Garante que o posicionamento absoluto do botão de exclusão funcione */
+    display: flex;
+    flex-direction: column; /* Organiza os elementos internos verticalmente */
+    gap: 8px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1);
+    cursor: grab; /* Mudando o cursor para indicar que é arrastável */
+}
+
+/* Estilo para os ícones de comentários e anexos */
+.card-icons p {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer; /* Adiciona o cursor pointer */
+    transition: transform 0.2s ease, color 0.2s ease; /* Suaviza o hover */
+}
+
+.card-icons p:hover {
+    transform: scale(1.1); /* Aumenta levemente o tamanho no hover */
+    color: #2563eb; /* Muda a cor para azul no hover */
+}
+
+.card-icons p i {
+    font-size: 16px; /* Ajusta o tamanho do ícone */
+}
+
+/* Estilo para campos com erro */
+.input-error {
+    border: 2px solid #dc2626; /* Vermelho */
+    background-color: #fee2e2; /* Fundo vermelho claro */
+}
+
+/* Estilo para mensagens de erro */
+.error-message {
+    color: #dc2626; /* Vermelho */
+    font-size: 14px;
+    margin-top: 5px;
+    display: none; /* Oculta por padrão */
+}
+
+/* Estilo para o botão de fluxo */
+.process-flow-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 24px;
+    background-color: #4caf50; /* Verde */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.process-flow-btn:hover {
+    background-color: #388e3c; /* Verde mais escuro */
+    transform: translateY(-2px); /* Eleva o botão no hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.process-flow-btn:active {
+    transform: translateY(0); /* Remove a elevação ao clicar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o botão de fluxo de tarefas */
+.task-flow-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 24px;
+    background-color: #2196f3; /* Azul */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-flow-btn:hover {
+    background-color: #1976d2; /* Azul mais escuro */
+    transform: translateY(-2px); /* Eleva o botão no hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.task-flow-btn:active {
+    transform: translateY(0); /* Remove a elevação ao clicar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .Kanban {
+        flex-direction: column; /* Empilha as colunas verticalmente */
+        gap: 15px;
+    }
+
+    .kanban-column {
+        flex: 1 1 100%; /* Ocupa toda a largura em telas menores */
+    }
+
+    .process-flow-btn {
+        width: 90%; /* Botão ocupa quase toda a largura */
+    }
+}
+

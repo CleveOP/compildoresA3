@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-rb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+    <title>CoperFlow</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="task-creation-form">
+        <h3>Criar Nova Tarefa</h3>
+        <label for="task-title">Título:</label>
+        <input type="text" id="task-title" placeholder="Título da tarefa">
+        <label for="task-priority">Prioridade:</label>
+        <select id="task-priority">
+            <option value="high">Alta</option>
+            <option value="medium">Média</option>
+            <option value="low">Baixa</option>
+        </select>
+        <label for="task-deadline">Prazo:</label>
+        <input type="text" id="task-deadline" placeholder="YYYY-MM-DD">
+        <p id="error-message" class="error-message"></p> <!-- Mensagem de erro -->
+        <button id="create-task-btn">Criar Tarefa</button>
+    </div>
+
+    <main class="Kanban">
+        <div class="kanban-column" data-id="1">
+            <h2>Pendente</h2>
+            <div class="kanban-cards" data-column-id="1"></div>
+        </div>
+        <div class="kanban-column" data-id="2">
+            <h2>Em front end</h2>
+            <div class="kanban-cards" data-column-id="2"></div>
+        </div>
+        <div class="kanban-column" data-id="3">
+            <h2>Em back end</h2>
+            <div class="kanban-cards" data-column-id="3"></div>
+        </div>
+        <div class="kanban-column" data-id="4">
+            <h2>Em teste</h2>
+            <div class="kanban-cards" data-column-id="4"></div>
+        </div>
+        <div class="kanban-column" data-id="5">
+            <h2>Concluído</h2>
+            <div class="kanban-cards" data-column-id="5"></div>
+        </div>
+    </main>
+
+    <script src="./main.js"></script>
+</body>
+</html>
