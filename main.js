@@ -256,17 +256,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         return title.trim().length > 0; // Verifica se o título não está vazio
     }
 
-    // Função para validar o prazo
     function validateTaskDeadline(deadline) {
-        const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Formato YYYY-MM-DD
+        const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/; // Formato DD/MM/YYYY
         if (!dateRegex.test(deadline)) return false;
 
-        const date = new Date(deadline);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Remove a hora para comparar apenas a data
+        // Divide a string para extrair dia, mês e ano
+        const [day, month, year] = deadline.split('/').map(Number);
 
-        return !isNaN(date.getTime()) && date >= today; // Verifica se a data é válida e não está no passado
+        // Cria um objeto de data e verifica se os valores são válidos
+        const dateObj = new Date(year, month - 1, day);
+        return dateObj.getFullYear() === year &&
+            dateObj.getMonth() === month - 1 &&
+            dateObj.getDate() === day;
     }
+
 
     // Função para exibir mensagens de erro
     function showError(input, message) {
@@ -298,7 +301,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             if (!validateTaskDeadline(deadline)) {
-                showError(taskDeadlineInput, 'O prazo deve ser uma data válida no formato YYYY-MM-DD.');
+                showError(taskDeadlineInput, 'O prazo deve ser uma data válida no formato DD-MM-AAAA.');
                 return;
             } else {
                 clearError(taskDeadlineInput);
@@ -435,4 +438,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Evento para exibir o gráfico e a tabela ao clicar no botão
     taskFlowBtn.addEventListener('click', showTaskFlow);
 });
-

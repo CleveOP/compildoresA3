@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
-    <title>CoperFlow</title>
+    <title>TaskWise</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <header>
+            <img class="img-header" src="./img/IMG-20250527-WA0017.png" alt="">
+        <h1>TaskWise</h1>
+            <img class="img-header" src="./img/IMG-20250527-WA0017.png" alt="">
+        
+    </header>
+    <hr>
+
     <div class="task-creation-form">
         <h3>Criar Nova Tarefa</h3>
         <label for="task-title">Título:</label>
@@ -20,7 +28,7 @@
             <option value="low">Baixa</option>
         </select>
         <label for="task-deadline">Prazo:</label>
-        <input type="text" id="task-deadline" placeholder="YYYY-MM-DD">
+        <input type="text" id="task-deadline" placeholder="DD/MM/AAAA">
         <p id="error-message" class="error-message"></p> <!-- Mensagem de erro -->
         <button id="create-task-btn">Criar Tarefa</button>
     </div>
@@ -47,6 +55,9 @@
             <div class="kanban-cards" data-column-id="5"></div>
         </div>
     </main>
+
+    <footer>
+        <p>&copy; 2023 TaskWise. Todos os direitos reservados.</p>
 
     <script src="./main.js"></script>
 </body>

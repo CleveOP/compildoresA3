@@ -9,7 +9,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9fafb; /* Fundo claro */
+    background-color: #d0dce7; /* Fundo claro */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -381,11 +381,50 @@ body {
     }
 
     .kanban-column {
-        flex: 1 1 100%; /* Ocupa toda a largura em telas menores */
+        flex: 1 1  /* Ocupa toda a largura em telas menores */
     }
 
     .process-flow-btn {
         width: 90%; /* Botão ocupa quase toda a largura */
     }
 }
+/* Estilos para o seu Header original */
+header {
+    display: flex;
+    align-items: center;
+    justify-content:center; /* Alinha a imagem e o título */
+    background-color: #bedaf7; /* Cor de fundo suave para a barra do header */
+    padding: 1px 45%;     /* Espaçamento interno: 10px em cima/baixo, 20px nas laterais */
+    display: flex;          /* Para alinhar a imagem verticalmente, se necessário */
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%;           /* Ocupa toda a largura da tela */
+}
 
+header img {
+    width: 200px; 
+    border: 2px solid #518feb; /* Borda branca ao redor da imagem */
+    border-radius: 50px; /* Arredondamento dos cantos da imagem */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor da imagem */
+    transition: transform 0.3s ease; /* Suaviza a transformação */
+}
+header img:hover {
+    transform: scale(1.02); /* Aumenta levemente a imagem no hover */
+}
+header h1 {
+    font-size: 44px; /* Tamanho do texto do título */
+    color: #15407c; /* Cor do texto do título */
+    margin-left: 300px;
+    margin-right:300px; /* Espaçamento entre a imagem e o título */
+    font-weight: bold; /* Deixa o texto em negrito */
+    border: 2px solid #15407c; /* Borda ao redor do título */
+    padding: 10px 20px; /* Espaçamento interno do título */
+    border-radius: 10px; /* Arredondamento dos cantos do título */
+}
+
+h1:hover {
+    color: #7694e6; /* Muda a cor do texto no hover */
+    background-color: #e0f2fe; /* Muda o fundo no hover */
+    transform: scale(1.05); /* Aumenta levemente o título no hover */
+    border: 2px solid #7093f5; /* Muda a cor da borda no hover */
+}
